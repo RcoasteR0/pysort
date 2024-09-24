@@ -11,17 +11,20 @@ count = len(the_list)
 def sort_bubble(arr):
   print('-- Bubble', '-' * 60)
   print(f'before: {arr}')
+
   end = count - 1
   while end > 0:
     for i in range(end):
       if arr[i] > arr[i + 1]:
         arr[i], arr[i + 1] = arr[i + 1], arr[i]
     end = end - 1
+
   print(f'after : {len(arr)=}, {arr}')
 
 def sort_select(arr):
   print('** Select', '*' * 60)
   print(f'before: {arr}')
+
   start = 0
   while start < count:
     small = start
@@ -30,11 +33,13 @@ def sort_select(arr):
         small = i
     arr[start], arr[small] = arr[small], arr[start]
     start = start + 1
+
   print(f'after : {len(arr)=}, {arr}')
 
 def sort_insert(arr):
   print('== Insert', '=' * 60)
   print(f'before: {arr}')
+
   for i in range(1, count):
     select = i
     while select > 0:
@@ -49,6 +54,19 @@ def sort_insert(arr):
 def sort_shell(arr):
   print('++ Shell', '+' * 60)
   print(f'before: {arr}')
+
+  for i in range(5):
+    interval = 5 - i
+    for j in range(interval):
+      for k in range(j + interval, count, interval):
+        select = k
+        while select > 0:
+          if arr[select] < arr[select - interval]:
+            arr[select], arr[select - interval] = arr[select - interval], arr[select]
+            select = select - interval
+          else:
+            break
+
   print(f'after : {len(arr)=}, {arr}')
 
 def main():
