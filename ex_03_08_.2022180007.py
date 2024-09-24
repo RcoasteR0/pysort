@@ -24,22 +24,30 @@ words = [
 
 count = len(words)
 
-def downheap(root):
+def downheap(root, size):
     lchild = root * 2 + 1
     rchild = root * 2 + 2
-    if lchild >= count:
+    if lchild >= size:
         return
     child = lchild
-    if rchild < count:
+    if rchild < size:
         if words[rchild] > words[lchild]:
             child = rchild
     if words[root] < words[child]:
         words[root], words[child] = words[child], words[root]
-        downheap(child)
+        downheap(child, size)
 
 print(f'before: {words}')
 
+parent_idx = count // 2 - 1
+for i in range(parent, -1, -1):
+    downheap(i, count)
 
+last_idx = count - 1
+while last_idx > 0:
+    words[0], words[last_idx] = words[last_idx], words[0]
+    downheap(0, last_idx)
+    last_idx -= 1
 
 print(f'after: {words}')
     
