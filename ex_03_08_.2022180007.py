@@ -40,7 +40,7 @@ def downheap(root, size):
 print(f'before: {words}')
 
 parent_idx = count // 2 - 1
-for i in range(parent, -1, -1):
+for i in range(parent_idx, -1, -1):
     downheap(i, count)
 
 last_idx = count - 1
