@@ -29,3 +29,17 @@ def downheap(root):
     rchild = root * 2 + 2
     if lchild >= count:
         return
+    child = lchild
+    if rchild < count:
+        if words[rchild] > words[lchild]:
+            child = rchild
+    if words[root] < words[child]:
+        words[root], words[child] = words[child], words[root]
+        downheap(child)
+
+print(f'before: {words}')
+
+
+
+print(f'after: {words}')
+    
