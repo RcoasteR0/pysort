@@ -35,6 +35,15 @@ def sort_select(arr):
 def sort_insert(arr):
   print('== Insert', '=' * 60)
   print(f'before: {arr}')
+  for i in range(1, count):
+    select = i
+    while select > 0:
+      if arr[select] < arr[select - 1]:
+        arr[select], arr[select - 1] = arr[select - 1], arr[select]
+        select = select - 1
+      else:
+        break
+    
   print(f'after : {len(arr)=}, {arr}')
 
 def sort_shell(arr):
