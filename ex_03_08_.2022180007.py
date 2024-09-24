@@ -21,3 +21,11 @@ words = [
   'ramification', 'scorn', 'apricot', 'arnica', 'militate', 'muslim', 'homicide', 'overfeed', 'shooting', 'growth',
 
 ]
+
+count = len(words)
+
+def downheap(root):
+    lchild = root * 2 + 1
+    rchild = root * 2 + 2
+    if lchild >= count:
+        return
