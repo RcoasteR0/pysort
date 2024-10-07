@@ -39,7 +39,7 @@ def quickSort(arr, left, right):
     if size <= 5:
         return
 
-    pivot_index = partition()
+    pivot_index = partition(arr, left, right)
     quickSort(arr, left, pivot_index - 1)
     quickSort(arr, pivot_index + 1, right)
 
@@ -47,15 +47,15 @@ def partition(arr, left, right):
     random_index = random.randint(left, right)
     arr[left], arr[random_index] = arr[random_index], arr[left]
 
-    p, q = left, right
+    p, q = left + 1, right
 
     while p < q: #선수 역전할때까지
-        while : #왼쪽에서 오른쪽
-            pass
-        while : #오른쪽에서 왼쪽
-            pass
+        while arr[p] < arr[left]:#왼쪽에서 오른쪽
+            p += 1
+        while arr[q] > arr[left]: #오른쪽에서 왼쪽
+            q -= 1
 
-        #swap # 두 선수 교체
+        arr[p], arr[q] = arr[q], arr[p] # 두 선수 교체
 
     #맨 왼쪽 pivot값을 왼쪽 덩어리의 가장 오른쪽 위치로 보냄
     arr[left], arr[random_index] = arr[random_index], arr[left]
